@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
-async function conectaBanco(){
-    mongoose.connect("mongodb+srv://admin:admin123@cluster0.gxmvymc.mongodb.net/livraria?retryWrites=true&w=majority");
-    return mongoose.connection;
-}
+async function conectaNaDatabase() {
+  console.log(process.env.DB_CONNECTION_STRING)
+  mongoose.connect(process.env.DB_CONNECTION_STRING);
+  return mongoose.connection;
+};
 
-export default conectaBanco;
+export default conectaNaDatabase;
